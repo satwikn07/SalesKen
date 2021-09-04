@@ -1,11 +1,15 @@
 #container{
     display: grid;
-    grid-template-columns: repeat(90,1vw);
+    grid-template-columns: repeat(90,10px);
     grid-gap: 1px;
     position: relative;
     border: 2px solid black;
+    align-items:baseline;
 }
 #time{
+    text-align: center;
+}
+#controller{
     text-align: center;
 }
 /* .bars{

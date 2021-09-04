@@ -1,6 +1,7 @@
 var time = 0;
-document.getElementById('showbars').addEventListener('click',showbars);
-document.getElementById('start-pause').addEventListener('click',start_pause);
+// document.getElementById('showbars').addEventListener('click',showbars);
+var start_pause_button = document.getElementById('start-pause');
+start_pause_button.addEventListener('click',start_pause);
 function showbars(){
     let container = document.getElementById('container');
     container.textContent = "";
@@ -9,7 +10,8 @@ function showbars(){
         // bar.textContent = i;
         bar.id = i;
         bar.class = 'bars';
-        bar.style.backgroundColor = '#b295e9';   
+        bar.style.backgroundColor = '#b295e9';
+        bar.style.minHeight = '30px';   
         bar.style.height = `${Math.random()*100}px`;
         bar.style.maxHeight = '100px';
         bar.style.cursor = 'pointer';
@@ -17,6 +19,7 @@ function showbars(){
         container.appendChild(bar);
     }
 }
+showbars();
 function play(){
     
     // console.log('play function');
@@ -36,6 +39,7 @@ var interval;
 function start_pause(){
     // console.log(interval,'intervalID');
     if(interval==undefined){
+        start_pause_button.innerHTML = `<i class="fa fa-pause" style="font-size:36px;"></i>`
         interval = setInterval(()=>{
             time++;
             // console.log(time);
@@ -50,6 +54,7 @@ function start_pause(){
     else{
         clearInterval(interval)       
         interval = undefined;
+        start_pause_button.innerHTML = `<i  class="fa fa-play" style="font-size:36px;"></i>`
     }
     
 }
