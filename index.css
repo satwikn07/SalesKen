@@ -1,10 +1,11 @@
 #container{
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(90,10px);
     grid-gap: 1px;
     position: relative;
     border: 2px solid black;
-    align-items:baseline;
+    align-items:baseline; */
+    text-align: center;
 }
 #time{
     text-align: center;

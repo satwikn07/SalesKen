@@ -18,9 +18,23 @@ function showbars(){ //this fuctions adds bars to the display
         // bar.addEventListener('click',shift);
         // container.appendChild(bar);
         let canvas = document.createElement('canvas');
+        canvas.id = i;
+        canvas.style.border = `1px solid black`;
+        canvas.style.height = `320px`;
+        canvas.style.width = `10px`;
+        canvas.style.cursor = 'pointer';
+        canvas.addEventListener('click',shift);
         var ctx = canvas.getContext('2d');
-        ctx.fillStyle = '#FF0000';
-        ctx.fillRect(10,10,10,100);
+        ctx.fillStyle = `rgb(221, 221, 221)`;
+        if(i%10==1){
+            ctx.fillRect(0,40,200,100-Math.round(i/10)*2)
+        }else{
+            ctx.fillRect(0,Math.round(i%5+3)*6,200,80+Math.round(i/10)*2)
+        }
+        // ctx.fillRect(0, 0, 10,130)
+        // var ctx = canvas.getContext('2d');
+        // ctx.fillStyle = '#FF0000';
+        // ctx.fillRect(0,0,10,100);
         container.appendChild(canvas);
 //         <canvas id="myCanvas" width="10" height="100" style="border:1px solid #000000;">
 // Your browser does not support the HTML canvas tag.
@@ -33,18 +47,39 @@ showbars();
 function play(){ //this function colorises the bars according to time lapsed
     
     // console.log('play function');
-    let bars = document.querySelectorAll('#container div');
+    // let bars = document.querySelectorAll('#container div');
+    let bars = document.querySelectorAll('#container canvas');
+    bars.forEach(bar=>{
+        var context = bar.getContext("2d");
+        context.clearRect(0,0,bar.width,bar.height);
+        if(bar.id<=time){
+            context.fillStyle=`rgb(226, 24, 102)`;
+        }else{
+            context.fillStyle=`rgb(221, 221, 221)`;
+        }
+         //can be a CSS color, a gradient, or a pattern. The default fillStyle is black
+        if(bar.id%10==1){
+            context.fillRect(0,40,200,100-Math.round(bar.id/10)*2)
+        }else{
+            context.fillRect(0,Math.round(bar.id%5+3)*6,200,80+Math.round(bar.id/10)*2)
+        }
+        // context.fill()
+        // ctx.fillRect(5,0,10,150);
+        // console.log(bar);
+    })
+    // console.log(bars);
     // console.log(bars);
     // console.log(bars);
     // console.log('play again');
-    for(let i=0;i<bars.length;i++){
-        if(bars[i].id <= time){
-            bars[i].style.backgroundColor = '#443068';
-        }else{
-            bars[i].style.backgroundColor = '#b295e9';
-        }
-    }
+    // for(let i=0;i<bars.length;i++){
+    //     if(bars[i].id <= time){
+    //         bars[i].style.backgroundColor = '#443068';
+    //     }else{
+    //         bars[i].style.backgroundColor = '#b295e9';
+    //     }
+    // }
 }
+// play();
 var intervalID;
 function start_pause(){
     // console.log(interval,'intervalID');
@@ -56,7 +91,7 @@ function start_pause(){
             if(time>90){
                 clearInterval(interval);
             }else{
-                document.getElementById('time').textContent = `${Math.floor(time/60)}mins ${time%60}secs`
+                document.getElementById('time').textContent = `${Math.floor(time/60)}mins: ${time%60}secs`
                 play();
             }
         },1000)    
