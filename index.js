@@ -1,11 +1,17 @@
 var time = 0; //time lapsed is 0, initially
+// let track = document.createElement('audio');
+// track.id = 'audio';
+// track.src = `song1.mp3`;
+// track.load();
+// track.play();
+// console.log(track);
 // document.getElementById('showbars').addEventListener('click',showbars);
 var start_pause_button = document.getElementById('start-pause');
 start_pause_button.addEventListener('click',start_pause);
 function showbars(){ //this fuctions adds bars to the display
     let container = document.getElementById('container');
     container.textContent = "";
-    for(let i=1;i<=120;i++){
+    for(let i=1;i<=130;i++){
         // let bar = document.createElement('div');
         // // bar.textContent = i;
         // bar.id = i;
@@ -82,14 +88,20 @@ function play(){ //this function colorises the bars according to time lapsed
 // play();
 var intervalID;
 function start_pause(){
+    
+    // audio.play();
     // console.log(interval,'intervalID');
     if(intervalID==undefined){ //if intervalID is undefined, we shall set a new interval
+        play_music();
         start_pause_button.innerHTML = `<i class="fa fa-pause" style="font-size:36px;"></i>` //changing start/pause icon
         intervalID = setInterval(()=>{
-            time++;
+            time = Math.ceil(document.getElementById('audio').currentTime)
+            console.log(document.getElementById('audio').currentTime);
             // console.log(time);
-            if(time>120){
-                clearInterval(interval);
+            if(time>130){
+                clearInterval(intervalID);
+                pause_music();
+                start_pause_button.innerHTML = `<i  class="fa fa-play" style="font-size:36px;"></i>`
             }else{
                 document.getElementById('time').textContent = `${Math.floor(time/60)}mins: ${time%60}secs`
                 play();
@@ -97,14 +109,24 @@ function start_pause(){
         },1000)    
     }
     else{ //if the interval is already set, then we clear it and set IntervalID as undefined
-        clearInterval(intervalID)       
+        clearInterval(intervalID)
+        pause_music();       
         intervalID = undefined;
         start_pause_button.innerHTML = `<i  class="fa fa-play" style="font-size:36px;"></i>` //changing start pause icon
     }
     
 }
 function shift(e){
-    time = e.target.id-1; //on click over the bars, the value of time lapsed is changed
+    time = e.target.id;
+    document.getElementById('audio').currentTime = e.target.id; //on click over the bars, the value of time lapsed is changed
+}
+//audio codes
+function play_music(){
+    document.getElementById('audio').play();
+    document.getElementById('audio').muted = false;
+}
+function pause_music(){
+    document.getElementById('audio').pause();
 }
 //Banner 1
 var canvas = document.getElementById("banner1");
@@ -181,3 +203,4 @@ ctx.fill();
 ctx.fillStyle = 'white';
 ctx.font = "12px Arial";
 ctx.fillText("Rapport Building - Empathy", 28, 28);
+

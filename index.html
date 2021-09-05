@@ -20,11 +20,10 @@
         
         <!--All the bars will be present inside this div-->
     </div>
-    <!-- <button id="showbars">Show Bars</button> -->
-    <!-- <button id="start-pause">Start/Pause</button> -->
+    
     <div id="controller">
         <!--Pause-Play Button is displayed here-->
-        <button><i class='fa fa-volume-up' style='font-size:24px'></i></button>
+        <button id="volume_up" onclick='mute_sound()'><i class='fa fa-volume-up' style='font-size:24px'></i></button>
        <button id="start-pause"><i  class="fa fa-play" style="font-size:36px;"></i></button>
        <button><i class="fa fa-forward" style="font-size:24px"></i></button>
     </div>
@@ -46,6 +45,7 @@
     <canvas id="banner5" width="200" height="150"
     >
     </canvas>
+    <audio src="song1.mp3" id='audio' muted></audio>
     <script src="index.js"></script>
 </body>
 </html>
