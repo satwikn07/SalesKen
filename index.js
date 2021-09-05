@@ -1,31 +1,12 @@
-var time = 0; //time lapsed is 0, initially
-// let track = document.createElement('audio');
-// track.id = 'audio';
-// track.src = `song1.mp3`;
-// track.load();
-// track.play();
-// console.log(track);
-// document.getElementById('showbars').addEventListener('click',showbars);
+var time = 0;
 var start_pause_button = document.getElementById('start-pause');
 start_pause_button.addEventListener('click',start_pause);
 function showbars(){ //this fuctions adds bars to the display
     let container = document.getElementById('container');
     container.textContent = "";
     for(let i=1;i<=130;i++){
-        // let bar = document.createElement('div');
-        // // bar.textContent = i;
-        // bar.id = i;
-        // bar.class = 'bars';
-        // bar.style.backgroundColor = '#b295e9';
-        // bar.style.minHeight = '30px';   
-        // bar.style.height = `${Math.random()*100}px`;
-        // bar.style.maxHeight = '100px';
-        // bar.style.cursor = 'pointer';
-        // bar.addEventListener('click',shift);
-        // container.appendChild(bar);
         let canvas = document.createElement('canvas');
         canvas.id = i;
-        // canvas.style.border = `1px solid black`;
         canvas.style.height = `200px`;
         canvas.style.width = `10px`;
         canvas.style.cursor = 'pointer';
@@ -37,23 +18,13 @@ function showbars(){ //this fuctions adds bars to the display
         }else{
             ctx.fillRect(0,Math.round(i%5+3)*6,200,80+Math.round(i/10)*2)
         }
-        // ctx.fillRect(0, 0, 10,130)
-        // var ctx = canvas.getContext('2d');
-        // ctx.fillStyle = '#FF0000';
-        // ctx.fillRect(0,0,10,100);
+       
         container.appendChild(canvas);
-//         <canvas id="myCanvas" width="10" height="100" style="border:1px solid #000000;">
-// Your browser does not support the HTML canvas tag.
-// </canvas>
-
 
     }
 }
 showbars(); 
 function play(){ //this function colorises the bars according to time lapsed
-    
-    // console.log('play function');
-    // let bars = document.querySelectorAll('#container div');
     let bars = document.querySelectorAll('#container canvas');
     bars.forEach(bar=>{
         var context = bar.getContext("2d");
@@ -63,45 +34,25 @@ function play(){ //this function colorises the bars according to time lapsed
         }else{
             context.fillStyle=`rgb(221, 221, 221)`;
         }
-         //can be a CSS color, a gradient, or a pattern. The default fillStyle is black
         if(bar.id%10==1){
             context.fillRect(0,50,200,100-Math.round(bar.id/10)*2)
         }else{
             context.fillRect(0,Math.round(bar.id%5+3)*6,200,80+Math.round(bar.id/10)*2)
         }
-        // context.fill()
-        // ctx.fillRect(5,0,10,150);
-        // console.log(bar);
     })
-    // console.log(bars);
-    // console.log(bars);
-    // console.log(bars);
-    // console.log('play again');
-    // for(let i=0;i<bars.length;i++){
-    //     if(bars[i].id <= time){
-    //         bars[i].style.backgroundColor = '#443068';
-    //     }else{
-    //         bars[i].style.backgroundColor = '#b295e9';
-    //     }
-    // }
+  
 }
-// play();
 var intervalID;
 function start_pause(){
-    
-    // audio.play();
-    // console.log(interval,'intervalID');
     if(intervalID==undefined){ //if intervalID is undefined, we shall set a new interval
         play_music();
-        start_pause_button.innerHTML = `<i class="fa fa-pause" style="font-size:36px;"></i>` //changing start/pause icon
+        start_pause_button.innerHTML = `<i class="fa fa-pause" style="font-size:42px;color:rgb(64, 192, 231)"></i>` //changing start/pause icon
         intervalID = setInterval(()=>{
-            time = Math.ceil(document.getElementById('audio').currentTime)
-            console.log(document.getElementById('audio').currentTime);
-            // console.log(time);
+            time = Math.round(document.getElementById('audio').currentTime)            
             if(time>130){
                 clearInterval(intervalID);
                 pause_music();
-                start_pause_button.innerHTML = `<i  class="fa fa-play" style="font-size:36px;"></i>`
+                start_pause_button.innerHTML = `<i  class="fa fa-play" style="font-size:42px;color:rgb(64, 192, 231)"></i>`
             }else{
                 document.getElementById('time').textContent = `${Math.floor(time/60)}mins: ${time%60}secs`
                 play();
@@ -112,13 +63,13 @@ function start_pause(){
         clearInterval(intervalID)
         pause_music();       
         intervalID = undefined;
-        start_pause_button.innerHTML = `<i  class="fa fa-play" style="font-size:36px;"></i>` //changing start pause icon
+        start_pause_button.innerHTML = `<i  class="fa fa-play" style="font-size:42px;color:rgb(64, 192, 231)"></i>` //changing start pause icon
     }
     
 }
 function shift(e){
     time = e.target.id;
-    document.getElementById('audio').currentTime = e.target.id; //on click over the bars, the value of time lapsed is changed
+    document.getElementById('audio').currentTime = time; //on click over the bars, the value of time lapsed is changed
 }
 //audio codes
 function play_music(){
