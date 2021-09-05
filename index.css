@@ -6,6 +6,7 @@
     border: 2px solid black;
     align-items:baseline; */
     text-align: center;
+    border: 1px solid black;
 }
 #time{
     text-align: center;

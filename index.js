@@ -19,7 +19,7 @@ function showbars(){ //this fuctions adds bars to the display
         // container.appendChild(bar);
         let canvas = document.createElement('canvas');
         canvas.id = i;
-        canvas.style.border = `1px solid black`;
+        // canvas.style.border = `1px solid black`;
         canvas.style.height = `320px`;
         canvas.style.width = `10px`;
         canvas.style.cursor = 'pointer';
@@ -27,7 +27,7 @@ function showbars(){ //this fuctions adds bars to the display
         var ctx = canvas.getContext('2d');
         ctx.fillStyle = `rgb(221, 221, 221)`;
         if(i%10==1){
-            ctx.fillRect(0,40,200,100-Math.round(i/10)*2)
+            ctx.fillRect(0,50,200,100-Math.round(i/10)*2)
         }else{
             ctx.fillRect(0,Math.round(i%5+3)*6,200,80+Math.round(i/10)*2)
         }
@@ -59,7 +59,7 @@ function play(){ //this function colorises the bars according to time lapsed
         }
          //can be a CSS color, a gradient, or a pattern. The default fillStyle is black
         if(bar.id%10==1){
-            context.fillRect(0,40,200,100-Math.round(bar.id/10)*2)
+            context.fillRect(0,50,200,100-Math.round(bar.id/10)*2)
         }else{
             context.fillRect(0,Math.round(bar.id%5+3)*6,200,80+Math.round(bar.id/10)*2)
         }
@@ -106,3 +106,34 @@ function start_pause(){
 function shift(e){
     time = e.target.id-1; //on click over the bars, the value of time lapsed is changed
 }
+//Banner 1
+var canvas = document.getElementById("banner1");
+var ctx = canvas.getContext("2d");
+ctx.beginPath();
+ctx.arc(100, 80, 3, 0, 2 * Math.PI);
+ctx.moveTo(100, 80);
+ctx.lineTo(100, 40);
+ctx.fillStyle = 'rgb(81, 232, 51)';
+ctx.fill();
+ctx.fillRect(50, 10, 100, 30); //first fill then stroke
+ctx.strokeStyle = 'rgb(81, 232, 51)';
+ctx.stroke();
+ctx.fillStyle = 'white';
+ctx.font = "12px Arial";
+ctx.fillText("Introduction", 67, 28);
+//Banner 2
+var canvas = document.getElementById("banner2");
+var ctx = canvas.getContext("2d");
+ctx.beginPath();
+ctx.arc(100, 140, 3, 0, 2 * Math.PI);
+ctx.moveTo(100, 140);
+ctx.lineTo(100, 40);
+ctx.fillStyle = 'rgb(98, 219, 161)';
+ctx.fill();
+ctx.fillRect(50, 10, 100, 30); //first fill then stroke
+ctx.strokeStyle = 'rgb(98, 219, 161)';
+ctx.stroke();
+ctx.fillStyle = 'white';
+ctx.font = "12px Arial";
+ctx.fillText("one_six", 77, 28);
+//Banner 3
