@@ -137,3 +137,17 @@ ctx.fillStyle = 'white';
 ctx.font = "12px Arial";
 ctx.fillText("one_six", 77, 28);
 //Banner 3
+var canvas = document.getElementById("banner3");
+var ctx = canvas.getContext("2d");
+ctx.beginPath();
+ctx.arc(100, 80, 3, 0, 2 * Math.PI);
+ctx.moveTo(100, 80);
+ctx.lineTo(100, 40);
+ctx.fillStyle = 'rgb(24, 64, 186)';
+ctx.fill();
+ctx.fillRect(60, 10, 80, 30); //first fill then stroke
+ctx.strokeStyle = 'rgb(24, 64, 186)';
+ctx.stroke();
+ctx.fillStyle = 'white';
+ctx.font = "12px Arial";
+ctx.fillText("Polite", 85, 29);
