@@ -6,13 +6,45 @@
     border: 2px solid black;
     align-items:baseline; */
     text-align: center;
-    border: 1px solid black;
+    /* margin-top: 10vh; */
+    margin-top: 150px;
+    /* border: 1px solid black; */
 }
 #time{
     text-align: center;
 }
 #controller{
     text-align: center;
+}
+body{
+    position: relative;
+    border: 1px solid white;
+}
+#banner1{
+    position: absolute;
+    left: 122px;
+    top: 107px;
+}
+#banner2{
+    position: absolute;
+    left: 252px;
+    top: 50px;
+}
+
+#banner4{
+    position: absolute;
+    right: 203px;
+    top: 0;
+}
+#banner5{
+    position: absolute;
+    right: 252px;
+    top: 50px;   
+}
+#banner3{
+    position: absolute;
+    right: 242px;
+    top: 120px;   
 }
 /* .bars{
     background-color: #b295e9;

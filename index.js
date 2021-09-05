@@ -5,7 +5,7 @@ start_pause_button.addEventListener('click',start_pause);
 function showbars(){ //this fuctions adds bars to the display
     let container = document.getElementById('container');
     container.textContent = "";
-    for(let i=1;i<=90;i++){
+    for(let i=1;i<=120;i++){
         // let bar = document.createElement('div');
         // // bar.textContent = i;
         // bar.id = i;
@@ -20,7 +20,7 @@ function showbars(){ //this fuctions adds bars to the display
         let canvas = document.createElement('canvas');
         canvas.id = i;
         // canvas.style.border = `1px solid black`;
-        canvas.style.height = `320px`;
+        canvas.style.height = `200px`;
         canvas.style.width = `10px`;
         canvas.style.cursor = 'pointer';
         canvas.addEventListener('click',shift);
@@ -88,7 +88,7 @@ function start_pause(){
         intervalID = setInterval(()=>{
             time++;
             // console.log(time);
-            if(time>90){
+            if(time>120){
                 clearInterval(interval);
             }else{
                 document.getElementById('time').textContent = `${Math.floor(time/60)}mins: ${time%60}secs`
