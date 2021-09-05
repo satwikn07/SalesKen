@@ -30,12 +30,12 @@ body{
 }
 #banner1{
     position: absolute;
-    left: 122px;
+    left: 222px;
     top: 107px;
 }
 #banner2{
     position: absolute;
-    left: 252px;
+    left: 472px;
     top: 50px;
 }
 
@@ -46,12 +46,12 @@ body{
 }
 #banner5{
     position: absolute;
-    right: 252px;
+    right: 334px;
     top: 50px;   
 }
 #banner3{
     position: absolute;
-    right: 242px;
+    right: 442px;
     top: 120px;   
 }
 /* .bars{
