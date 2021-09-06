@@ -29,12 +29,12 @@ function play(){ //this function colorises the bars according to time lapsed
     bars.forEach(bar=>{
         var context = bar.getContext("2d");
         context.clearRect(0,0,bar.width,bar.height);
-        if(bar.id<=time){
+        if(bar.id<=time){ //for color fill
             context.fillStyle=`rgb(226, 24, 102)`;
         }else{
             context.fillStyle=`rgb(221, 221, 221)`;
         }
-        if(bar.id%10==1){
+        if(bar.id%10==1){ //for shape
             context.fillRect(0,50,200,100-Math.round(bar.id/10)*2)
         }else{
             context.fillRect(0,Math.round(bar.id%5+3)*6,200,80+Math.round(bar.id/10)*2)
@@ -47,19 +47,19 @@ function start_pause(){
     if(intervalID==undefined){ //if intervalID is undefined, we shall set a new interval
         play_music();
         start_pause_button.innerHTML = `<i class="fa fa-pause" style="font-size:42px;color:rgb(64, 192, 231)"></i>` //changing start/pause icon
-        intervalID = setInterval(()=>{
-            time = Math.round(document.getElementById('audio').currentTime)            
-            if(time>130){
+        intervalID = setInterval(()=>{ // this function runs ever second
+            time = Math.round(document.getElementById('audio').currentTime)   //time is updated as per the current playtime of audio;      
+            if(time>130){ //to check wheteher the song has already played for 130s;
                 clearInterval(intervalID);
                 pause_music();
                 start_pause_button.innerHTML = `<i  class="fa fa-play" style="font-size:42px;color:rgb(64, 192, 231)"></i>`
             }else{
-                document.getElementById('time').textContent = `${Math.floor(time/60)}mins: ${time%60}secs`
+                document.getElementById('time').textContent = `${Math.floor(time/60)}mins: ${time%60}secs` //Display time
                 play();
             }
         },1000)    
     }
-    else{ //if the interval is already set, then we clear it and set IntervalID as undefined
+    else{ //if the interval is already set, then we clear it,pause the music  and set IntervalID as undefined
         clearInterval(intervalID)
         pause_music();       
         intervalID = undefined;
@@ -67,11 +67,11 @@ function start_pause(){
     }
     
 }
-function shift(e){
+function shift(e){ //for switching to different time during song play
     time = e.target.id;
     document.getElementById('audio').currentTime = time; //on click over the bars, the value of time lapsed is changed
 }
-//audio codes
+//audio play/pause codes
 function play_music(){
     document.getElementById('audio').play();
     document.getElementById('audio').muted = false;
@@ -79,21 +79,22 @@ function play_music(){
 function pause_music(){
     document.getElementById('audio').pause();
 }
+//Making of Banners
 //Banner 1
 var canvas = document.getElementById("banner1");
-var ctx = canvas.getContext("2d");
+var ctx = canvas.getContext("2d"); //context created
 ctx.beginPath();
-ctx.arc(100, 80, 4, 0, 2 * Math.PI);
+ctx.arc(100, 80, 4, 0, 2 * Math.PI); //blueprint for circle
 ctx.moveTo(100, 80);
-ctx.lineTo(100, 40);
-ctx.fillStyle = 'rgb(81, 232, 51)';
-ctx.fill();
-ctx.fillRect(50, 10, 100, 30); //first fill then stroke
-ctx.strokeStyle = 'rgb(81, 232, 51)';
-ctx.stroke();
-ctx.fillStyle = 'white';
-ctx.font = "12px Arial";
-ctx.fillText("Introduction", 67, 28);
+ctx.lineTo(100, 40); //blueprint for lines
+ctx.fillStyle = 'rgb(81, 232, 51)'; //color of fill
+ctx.fill(); //circle filled
+ctx.fillRect(50, 10, 100, 30); //reactangle filled
+ctx.strokeStyle = 'rgb(81, 232, 51)'; //stroke color
+ctx.stroke(); //lines drawn
+ctx.fillStyle = 'white'; //fill style changed to white for text
+ctx.font = "12px Arial"; //set the font size and font-family
+ctx.fillText("Introduction", 67, 28); //text written
 //Banner 2
 var canvas = document.getElementById("banner2");
 var ctx = canvas.getContext("2d");
